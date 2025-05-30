@@ -94,10 +94,7 @@ class CNN(nn.Module):
 
         # Fully connected network
         self.sequential2 = nn.Sequential(
-            nn.Linear(7*7*64, 128),
-            nn.BatchNorm1d(128),
-            activation_fn,
-            nn.Linear(128, num_classes),
+            nn.Linear(7*7*64, num_classes),
         )
 
     def forward(self, x):
