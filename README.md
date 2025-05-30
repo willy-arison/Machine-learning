@@ -5,7 +5,7 @@ This repository contains machine learning projects focused on image and text cla
 ## Image Classification
 
 * Architectures: ResNet, CNN, and MLP
-* Activation Functions: ReLU, Sigmoid, Tanh, and our proposed **Geletu-Hoffmann** function
+* Activation Functions: ReLU, Sigmoid, Tanh, Mish, Leaky ReLU, and our proposed **Geletu-Hoffmann** function
 * Datasets:
 
   * MNIST
