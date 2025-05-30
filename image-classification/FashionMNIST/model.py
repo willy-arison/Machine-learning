@@ -124,57 +124,6 @@ class MLP(nn.Module):
         x = x.view(x.size(0), -1)
         return self.sequential(x)
 
-
-class CNN2(nn.Module):
-    def __init__(self, activation_fn=nn.ReLU(), img_dim=32, num_classes=10):
-        super(CNN, self).__init__()
-
-        # Convolutional network
-        self.sequential1 = nn.Sequential(
-            # Convolution 1
-            nn.Conv2d(in_channels=3, out_channels=32, kernel_size=3, padding=1),
-            nn.BatchNorm2d(32),
-            activation_fn,
-
-            # Convolution 2
-            nn.Conv2d(in_channels=32, out_channels=64, kernel_size=3, padding=1),
-            nn.BatchNorm2d(64),
-            activation_fn,
-            nn.MaxPool2d(kernel_size=2),
-
-            # Convolution 3
-            nn.Conv2d(in_channels=64, out_channels=128, kernel_size=3, padding=1),
-            nn.BatchNorm2d(128),
-            activation_fn,
-            nn.MaxPool2d(kernel_size=2),
-
-            # Convolution 4
-            nn.Conv2d(in_channels=128, out_channels=256, kernel_size=3, padding=1),
-            nn.BatchNorm2d(256),
-            activation_fn,
-            nn.MaxPool2d(kernel_size=2),
-
-            # Convolution 5
-            nn.Conv2d(in_channels=256, out_channels=512, kernel_size=3, padding=1),
-            nn.BatchNorm2d(512),
-            activation_fn,
-            nn.MaxPool2d(kernel_size=2),
-            )
-
-        # Fully connected network
-        self.sequential2 = nn.Sequential(
-            nn.Linear(2048, 128),
-            nn.BatchNorm1d(128),
-            activation_fn,
-            nn.Linear(128, num_classes),
-        )
-
-    def forward(self, x):
-        x = self.sequential1(x)
-        x = x.view(x.shape[0], -1)
-        # print(x.shape)
-        return self.sequential2(x)
-
 if __name__=='__main__':
     x = torch.randn(16, 28, 28)
     print(MLP()(x))
